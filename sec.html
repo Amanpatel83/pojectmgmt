@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Reset some default styles */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+#loginForm, #userContent {
+    margin: 20px auto;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+input[type="text"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.post {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#loggedInUser {
+    font-weight: bold;
+}
+    </style>
+    <title>Social Media Platform</title>
+</head>
+<body>
+    <header>
+        <h1>Social Media Platform</h1>
+    </header>
+    <main>
+        <div id="loginForm">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+        <div id="userContent" style="display: none;">
+            <h2>Welcome, <span id="loggedInUser"></span>!</h2>
+            <textarea id="postContent" placeholder="Write something..."></textarea>
+            <button onclick="post()">Post</button>
+        </div>
+    </main>
+    <script>
+        let loggedInUser = null;
+
+function login() {
+    const username = document.getElementById("username").value;
+    loggedInUser = username;
+    
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("userContent").style.display = "block";
+    
+    document.getElementById("loggedInUser").textContent = loggedInUser;
+}
+
+function post() {
+    const postContent = document.getElementById("postContent").value;
+    
+    // Simulate posting functionality by adding a new post to the page
+    const newPost = document.createElement("div");
+    newPost.className = "post";
+    newPost.innerHTML = `<strong>${loggedInUser}:</strong> ${postContent}`;
+    
+    document.body.appendChild(newPost);
+}
+    </script>
+</body>
+</html>
